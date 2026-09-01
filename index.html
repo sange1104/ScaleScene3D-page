@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>ScaleScene3D</title>
+<meta name="description" content="ScaleScene3D scales pretrained 3D generative priors to produce detailed and coherent large-scale textured meshes from multi-view images.">
+
+<!-- Social preview -->
+<meta property="og:title" content="ScaleScene3D: Scaling 3D Generative Priors to Large-Scale Scene Meshes from Multi-View Images">
+<meta property="og:description" content="A training-free framework for large-scale textured mesh generation from multi-view images.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sange1104.github.io/ScaleScene3D-page/">
+<meta property="og:image" content="https://sange1104.github.io/ScaleScene3D-page/static/images/intro_v2.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/css/hybrid.css">
+</head>
+
+<body>
+
+<!-- ============ Hero ============ -->
+<header class="hero">
+  <div class="wrap">
+    <h1>
+      <span class="name">ScaleScene3D</span>: Scaling 3D Generative Priors to
+      Large-Scale Scene Meshes from Multi-View Images
+    </h1>
+
+    <p class="tagline">
+      ScaleScene3D scales pretrained 3D generative priors to produce detailed and
+      coherent large-scale textured meshes from multi-view images.
+    </p>
+
+    <p class="authors">
+      <a href="https://sange1104.github.io/" target="_blank" rel="noopener">SangEun Lee</a>,
+      <span>Wonseok Chae</span>,
+      <span>Hoyoung Yoo</span>,
+      <span>Geunyong Kim</span>,
+      <span>NackWoo Kim</span>,
+      <span>Hyeonjin Kim</span>
+    </p>
+    <p class="affiliations">ETRI</p>
+
+    <!--
+      링크가 생기면 아래 버튼의 class="btn disabled" 를 class="btn" 으로 바꾸고
+      href="#" 자리에 실제 주소를 넣으세요.
+    -->
+    <nav class="links">
+      <a class="btn disabled" href="#" aria-disabled="true">
+        <svg viewBox="0 0 384 512"><path d="M320 464c8.8 0 16-7.2 16-16V160H256c-17.7 0-32-14.3-32-32V48H64c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320zM0 64C0 28.7 28.7 0 64 0H229.5c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64z"/></svg>
+        Paper
+      </a>
+      <a class="btn disabled" href="#" aria-disabled="true">
+        <svg viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM160 144c0 8.8-7.2 16-16 16s-16-7.2-16-16V128H112v16c0 8.8-7.2 16-16 16s-16-7.2-16-16V128H64V96h16V80c0-8.8 7.2-16 16-16s16 7.2 16 16V96h16V80c0-8.8 7.2-16 16-16s16 7.2 16 16v64z"/></svg>
+        arXiv
+      </a>
+      <a class="btn disabled" href="#" aria-disabled="true">
+        <svg viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"/></svg>
+        Code
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ Teaser ============ -->
+<section class="teaser">
+  <div class="wrap">
+    <figure>
+      <img src="static/images/intro_v2.jpg"
+           alt="ScaleScene3D teaser: large-scale textured meshes generated from multi-view images.">
+      <figcaption>
+        ScaleScene3D generates detailed and globally consistent textured meshes of
+        large-scale scenes from multi-view images.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ Abstract ============ -->
+<section id="abstract">
+  <div class="wrap">
+    <h2>Abstract</h2>
+    <div class="prose">
+      <p>
+        Pretrained 3D generative models produce detailed geometry and appearance but are
+        primarily designed for object-centric generation within a limited spatial extent.
+        Recent approaches address this limitation by partitioning large scenes into smaller
+        spatial regions and applying pretrained 3D generative priors to each region.
+        However, scaling tiled generation to large multi-view scenes makes it challenging to
+        maintain local geometric continuity and global appearance consistency.
+      </p>
+      <p>
+        We present a training-free framework for large-scale textured mesh generation from
+        multi-view images. Our key idea is to scale tiled generation to large scenes with
+        increased spatial detail while coordinating generation both locally and globally.
+        We introduce local context tiled generation to improve geometric continuity between
+        neighboring regions and global appearance alignment to reduce appearance
+        discrepancies across distant regions. An adaptive scene decomposition further
+        determines the number of tiles according to the input scene geometry. Experiments
+        demonstrate improved geometric and appearance fidelity over existing approaches
+        while enabling fine-grained generation of large-scale scenes.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Method ============ -->
+<section id="method">
+  <div class="wrap">
+    <h2>Method Overview</h2>
+    <figure>
+      <img src="static/images/method_v2.jpg"
+           alt="Overview of the ScaleScene3D pipeline.">
+      <!-- TODO: method figure 캡션을 직접 작성해 주세요. -->
+      <figcaption>
+        Overview of ScaleScene3D. The input scene is decomposed into tiles, each generated
+        with a pretrained 3D generative prior under local context and global appearance
+        coordination, and merged into a single large-scale textured mesh.
+      </figcaption>
+    </figure>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Local Context Tiled Generation</h3>
+        <p>Conditions each tile on its surrounding context to improve geometric continuity between neighboring regions.</p>
+      </div>
+      <div class="card">
+        <h3>Global Appearance Alignment</h3>
+        <p>Coordinates appearance across the whole scene to reduce discrepancies between distant regions.</p>
+      </div>
+      <div class="card">
+        <h3>Adaptive Scene Decomposition</h3>
+        <p>Determines the number of tiles from the input scene geometry, so spatial detail scales with the scene.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Results ============ -->
+<section id="results">
+  <div class="wrap">
+    <h2>Results</h2>
+    <figure>
+      <video controls playsinline preload="none"
+             poster="static/images/results_poster.jpg">
+        <source src="static/videos/scalability_and_large_scale_results.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <figcaption>
+        <b>Scalability and large-scale results.</b> Comparison across 3&times;3, 5&times;5,
+        and 7&times;7 tiled generation demonstrates that increasing the tile resolution
+        produces finer-grained scene geometry, with 7&times;7 yielding the highest level of
+        detail.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ Related links ============ -->
+<section id="related" class="tight">
+  <div class="wrap">
+    <h2>Related Links</h2>
+    <p class="related">
+      Our method builds on the object-level 3D generation model
+      <a href="https://github.com/microsoft/trellis.2" target="_blank" rel="noopener">TRELLIS.2</a>
+      and extends the scene generation framework introduced by
+      <a href="https://github.com/SNU-VGILab/Extend3D" target="_blank" rel="noopener">Extend3D</a>
+      to large-scale multi-view scenes.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>
+      This website is licensed under a
+      <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">Creative
+      Commons Attribution-ShareAlike 4.0 International License</a>. It borrows the layout of the
+      <a href="https://nerfies.github.io" target="_blank" rel="noopener">Nerfies</a> project page.
+      Source on <a href="https://github.com/sange1104/ScaleScene3D-page" target="_blank" rel="noopener">GitHub</a>.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
